@@ -24,7 +24,7 @@ public class FilteringMachine {
     public List<Book> convertToBooks(List<String> titles) {
         List<Book> book = new ArrayList<>();
         titles.stream()
-                .forEach(title -> System.out.println(title));
+                .forEach(titleBook -> book.add(new Book(titleBook)));
         return book;
     }
 

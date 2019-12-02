@@ -16,7 +16,8 @@ public class FilteringMachineTwo {
     public List<User> convertPeopleToUsers(List<Person> people) {
         List<User> user = new ArrayList<>();
         people.stream()
-                .forEach(person -> user.add(new User(person.getName(), person.getAge(), person.getName() + "_" + person.getAge())));
+                .forEach(person -> user.add(new User(person.getName(), person.getAge(),
+                        person.getName() + "_" + person.getAge())));
         return user;
     }
 }
