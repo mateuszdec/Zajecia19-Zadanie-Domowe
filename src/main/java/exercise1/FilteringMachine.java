@@ -1,7 +1,9 @@
 package exercise1;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class FilteringMachine {
@@ -20,11 +22,17 @@ public class FilteringMachine {
     }
 
     public List<Book> convertToBooks(List<String> titles) {
-        return null;
+        List<Book> book = new ArrayList<>();
+        titles.stream()
+                .forEach(title -> System.out.println(title));
+        return book;
     }
 
     // Metoda powinna przekształcić tytuły na książki i zwrócić tylko te które rozpoczynają się od słowa "Gra"
     public List<Book> convertToBooksAndReturnOnlyStartingWithGra(List<String> titles) {
-        return null;
+        List<Book> book = new ArrayList<>();
+        titles.stream()
+                .filter(title -> title.startsWith("Gra"));
+        return book;
     }
 }
