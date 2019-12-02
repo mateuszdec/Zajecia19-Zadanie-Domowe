@@ -7,13 +7,16 @@ import java.util.stream.Collectors;
 public class FilteringMachine {
     public List<Integer> filterOutNotEvenNumbers(List<Integer> numberList) {
         List<Integer> newNumberList = numberList.stream()
-                .filter(a -> a % 2 != 0)
+                .filter(number -> number % 2 == 0)
                 .collect(Collectors.toList());
         return newNumberList;
     }
 
     public List<Integer> filterOutLowerNumbersThan20(List<Integer> numberList) {
-        return null;
+        List<Integer> newNumberList = numberList.stream()
+                .filter(number -> number > 20)
+                .collect(Collectors.toList());
+        return newNumberList;
     }
 
     public List<Book> convertToBooks(List<String> titles) {
