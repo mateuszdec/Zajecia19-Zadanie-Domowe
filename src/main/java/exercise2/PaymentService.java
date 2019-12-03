@@ -3,6 +3,7 @@ package exercise2;
 import java.math.BigDecimal;
 import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -49,7 +50,11 @@ class PaymentService {
     }
 
     Set<Payment> findPaymentsWithOnePaymentItem() {
-        throw new RuntimeException("Not implemented");
+        Set<Payment> payments = new HashSet<>();
+        paymentRepository.findAll().stream()
+                .filter(payment -> payment.getPaymentItems().size() == 1)
+                .forEach(payment -> payments.add(payment));
+        return payments;
     }
 
     Set<String> findProductsSoldInCurrentMonth() {
