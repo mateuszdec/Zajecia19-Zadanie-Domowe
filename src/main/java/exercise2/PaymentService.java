@@ -70,7 +70,11 @@ class PaymentService {
     }
 
     List<PaymentItem> getPaymentsForUserWithEmail(String userEmail) {
-        throw new RuntimeException("Not implemented");
+        List<PaymentItem> payments = new ArrayList<>();
+        paymentRepository.findAll().stream()
+                .filter(payment -> payment.getUser().getEmail().equals(userEmail))
+                .forEach(payment -> payment.getPaymentItems().forEach(paymentItem -> payments.add(paymentItem)));
+        return payments;
     }
 
     Set<Payment> findPaymentsWithValueOver(int value) {
