@@ -2,6 +2,7 @@ package exercise2;
 
 import java.math.BigDecimal;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -16,19 +17,35 @@ class PaymentService {
     }
 
     List<Payment> findPaymentsSortedByDateDesc() {
-        throw new RuntimeException("Not implemented");
+        List<Payment> payments = new ArrayList<>();
+        paymentRepository.findAll().stream()
+//                .filter(payment -> payment.getPaymentDate().getYear() == dateTimeProvider.yearMonthNow().getYear())
+//                .filter(payment -> payment.getPaymentDate().getMonth().equals(dateTimeProvider.yearMonthNow().getMonth()))
+                .forEach(payment -> payments.add(payment));
+        return payments;
     }
 
     List<Payment> findPaymentsForCurrentMonth() {
-        throw new RuntimeException("Not implemented");
+        List<Payment> payments = new ArrayList<>();
+        paymentRepository.findAll().stream()
+                .filter(payment -> payment.getPaymentDate().getYear() == dateTimeProvider.yearMonthNow().getYear())
+                .filter(payment -> payment.getPaymentDate().getMonth().equals(dateTimeProvider.yearMonthNow().getMonth()))
+                .forEach(payment -> payments.add(payment));
+        return payments;
     }
 
     List<Payment> findPaymentsForGivenMonth(YearMonth yearMonth) {
-        throw new RuntimeException("Not implemented");
+        List<Payment> payments = new ArrayList<>();
+        paymentRepository.findAll().stream()
+                .filter(payment -> payment.getPaymentDate().getYear() == yearMonth.getYear())
+                .filter(payment -> payment.getPaymentDate().getMonth().equals(yearMonth.getMonth()))
+                .forEach(payment -> payments.add(payment));
+        return payments;
     }
 
     List<Payment> findPaymentsForGivenLastDays(int days) {
         throw new RuntimeException("Not implemented");
+
     }
 
     Set<Payment> findPaymentsWithOnePaymentItem() {
